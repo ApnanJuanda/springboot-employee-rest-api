@@ -8,6 +8,7 @@ import com.springboot.employee.service.EmployeeService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 @Service
@@ -36,7 +37,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public List<EmployeeDto> getAllEmployees() {
-        List<Employee> employees = employeeRepository.findAll();
+        List<Employee> employees = (List<Employee>) employeeRepository.findAll();
+//        LinkedList<Employee> employees1 = (LinkedList<Employee>) employeeRepository.findAll();
         List<EmployeeDto> employeeDtos = new ArrayList<>();
         for(Employee employee: employees){
             EmployeeDto employeeTemp = mapToDto(employee);
